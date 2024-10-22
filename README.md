@@ -1,60 +1,48 @@
+# Reddit Real Estate Insights with Ollama
 
----
+This notebook leverages the Reddit API to gather and analyze discussions related to house prices in the United Kingdom. It performs a search within specific subreddits, retrieves posts discussing real estate, and extracts top comments to generate insights.
 
-# Reddit Real Estate Agent using Gemma2:9b
-
-This project aims to provide a recommendation system using data scraped from Reddit, specifically related to house prices in the United Kingdom. It employs the Gemma2:9b language model for natural language responses and filtering relevant Reddit posts based on user queries.
-
-## Project Overview
-
-The notebook implements a system that:
-1. Scrapes Reddit for housing-related posts using the `praw` library.
-2. Filters results to focus on specific keywords related to real estate, apartment prices, and house prices.
-3. Extracts the most relevant comments from the top posts and summarizes the findings.
-4. Uses the **Gemma2:9b** language model to provide concise natural language responses to user queries.
+⚠️ **Note**: This project is designed to explore the capabilities of **open-source lightweight models** like **Mistral-NEMO**. While it functions as intended, it's still experimental and may require adjustments for more complex tasks. For example, integrating a larger model could offer deeper contextual understanding or more nuanced sentiment analysis. However, the focus here is on showcasing what can be achieved using smaller, efficient models for local and resource-constrained environments. 
 
 ## Features
 
-- **Reddit Scraping**: Utilizes the `praw` library to fetch posts from relevant subreddits like `HousingUK`.
-- **Natural Language Processing**: Uses the Gemma2:9b model to generate user-friendly answers based on the Reddit posts.
-- **Comment Filtering**: Extracts the top comments with a minimum of 20 upvotes and provides them as part of the recommendation.
-- **Data Output**: Provides recommendations in a human-readable format, including average prices and a summary of housing trends.
+- **Reddit API Integration**: Fetches posts from the `HousingUK` subreddit.
+- **Custom Search**: Search functionality retrieves and ranks posts based on keywords like "house prices," "apartment prices," and "real estate."
+- **Comment Analysis**: Extracts and formats top comments (based on upvotes) for deeper insights into real estate trends.
+- **Natural Language Response**: Generates a natural language answer summarizing the findings, including average prices and locations if available.
 
-## Prerequisites
+## Requirements
 
-- Python 3.12 or higher
-- Required Python libraries:
-  - `praw`
-  - `pydantic`
-  - `Gemma2` language model
-  - `datetime`
+- `praw`
+- `pydantic`
+- `datetime`
 
-You will also need access to Reddit's API to retrieve the data.
+## How to Use
 
-## Setup
+1. Clone this repository.
+2. Install dependencies:
 
-1. Install the required packages:
    ```bash
    pip install praw pydantic
    ```
+3. Configure Reddit API credentials in the script (or use environment variables).
+4. Run the notebook, modifying the `query` variable to search for relevant house price discussions in specific locations.
 
-2. Ensure you have a valid Reddit API key, which can be obtained from [Reddit's Developer Tools](https://www.reddit.com/prefs/apps).
+## Example Usage
 
-3. Run the notebook to collect and process Reddit posts related to UK housing prices.
+Modify the query in the notebook to search for discussions in Manchester:
 
-## Usage
+```python
+query = "flat prices in Manchester"
+search_results = search(query)
+```
 
-1. Modify the query variable in the notebook to search for real estate data in your desired location, for example:
-   ```python
-   query = "flat prices in Manchester"
-   ```
+The search will return the top Reddit posts discussing flat prices in Manchester, along with user comments.
 
-2. Execute the notebook to generate housing recommendations based on the most upvoted Reddit posts. The notebook will return a summarized view of the housing market in the region specified.
+## Notes
 
-3. Use the `final_answer` function to format the output in a user-friendly format.
+Ensure you update the Reddit API credentials before running the notebook. The current credentials in the notebook are placeholders and should be replaced with your own.
 
-## Model Information
+## License
 
-The **Gemma2:9b** model used in this project is small but still offers impressive performance. It's a great choice for local execution, providing relevant and accurate responses in real-time without needing extensive cloud infrastructure.
-
----
+This project is licensed under the MIT License. See the LICENSE file for more details.
